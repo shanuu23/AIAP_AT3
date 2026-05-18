@@ -6,7 +6,7 @@ This repository contains a real-world AI application for political misinformatio
 
 | Student name | Student ID |
 |---|---|
-| [Student name] | [Student ID] |
+| Shanu Sharma   | 25979360     |
 | [Student name] | [Student ID] |
 | [Student name] | [Student ID] |
 | [Student name] | [Student ID] |
