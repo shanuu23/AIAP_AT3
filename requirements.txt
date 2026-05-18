@@ -1,0 +1,13 @@
+streamlit>=1.35
+pandas>=2.0
+numpy>=1.26
+matplotlib>=3.8
+seaborn>=0.13
+scikit-learn>=1.4
+tqdm>=4.66
+spacy>=3.7
+transformers>=4.40
+torch>=2.2
+networkx>=3.2
+jupyter>=1.0
+python-docx>=1.1
