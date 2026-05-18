@@ -7,11 +7,11 @@ This repository contains a real-world AI application for political misinformatio
 | Student name | Student ID |
 |---|---|
 | Shanu Sharma   | 25979360     |
-| [Student name] | [Student ID] |
-| [Student name] | [Student ID] |
-| [Student name] | [Student ID] |
-| [Student name] | [Student ID] |
-| [Student name] | [Student ID] |
+| Harshini Prasad | 26025369 |
+| Yash Bankar | 25717428 |
+| Remith Sajin | 25502170 |
+| Shameel Zeeshan Khader Sheriff | 26030371 |
+| Vit Patel | 25524051 |
 
 ## AI Methods Used
 
