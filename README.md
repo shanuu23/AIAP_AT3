@@ -97,14 +97,3 @@ streamlit run misinformation_verification_system/app.py
 | `misinformation_verification_system/app.py` | Streamlit demo |
 | `docs/AT3_Report_Draft.docx` | Report draft |
 
-## Report and Presentation
-
-Working assessment files are in `docs/`:
-
-- `AT3_Report_Draft.docx`
-- `REPORT_OUTLINE.md`
-- `RUBRIC_TRACEABILITY.md`
-- `PRESENTATION_OUTLINE.md`
-- `CONTRIBUTIONS_TEMPLATE.md`
-
-Before final submission, fill in the group member details, export the report to PDF, and submit the PowerPoint file required by the assignment.
