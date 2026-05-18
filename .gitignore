@@ -1,0 +1,56 @@
+# macOS / OS metadata
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+
+# Editor / IDE local settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ML experiment and training artifacts
+checkpoints/
+models/
+runs/
+wandb/
+mlruns/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
