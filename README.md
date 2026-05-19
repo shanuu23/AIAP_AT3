@@ -166,6 +166,7 @@ AIAP_AT3/
 │   └── outputs/
 │       ├── features.json
 │       ├── roberta_scores.json
+        ├── kg_results.json
 │       └── final_verdicts.json
 │
 └── report_assets/
@@ -174,7 +175,6 @@ AIAP_AT3/
         ├── feature_analysis.png
         ├── bayesian_analysis.png
         └── roc_curve.png
-```
 
 ## Workflow
 
@@ -201,26 +201,9 @@ The final notebook evaluation reports the following results on the binary test s
 | Component | Result |
 |---|---:|
 | RoBERTa text-only binary accuracy | 67.37% |
-| Knowledge graph accuracy on decidable binary test claims | 76.15% |
-| Knowledge graph coverage on binary test set | 80.34% |
+| Knowledge graph symbolic reasoning accuracy | 76.15% |
 | Bayesian fusion accuracy | 75.05% |
 | Bayesian fusion ROC-AUC | 0.8416 |
-
-## Result Interpretation
-
-The results show that text-only misinformation detection is challenging. RoBERTa reaches 67.37% binary accuracy, which suggests that claim wording contains useful signals but is not sufficient on its own. Many political claims require speaker history, context, and background knowledge that cannot be fully inferred from the claim sentence alone.
-
-The knowledge graph performs strongly on claims where symbolic rules can produce a decision. Its 76.15% accuracy shows that structural metadata such as speaker history, party affiliation, topic patterns, and historical false-claim rates provide useful credibility evidence. However, the KG does not decide every claim, so coverage must be reported together with accuracy.
-
-Bayesian fusion achieves 75.05% accuracy and a ROC-AUC of 0.8416. This is important because ROC-AUC measures how well the system separates true and false claims across different probability thresholds. In a real decision-support setting, calibrated probabilities are more useful than only a single hard verdict because reviewers can prioritise high-risk or low-confidence claims.
-
-## Evaluation Note
-
-The binary evaluation excludes the `half-true` LIAR class because it represents an ambiguous middle category. The final binary test set contains 1,002 claims.
-
-The knowledge graph accuracy is calculated only on 805 decidable binary test claims where the symbolic rules produced either `likely_true` or `likely_false`. Its coverage on the binary test set is 80.34%. Claims marked `unverifiable` are not counted in KG-only accuracy.
-
-Bayesian fusion is evaluated on the full binary test set and combines RoBERTa probability, KG evidence, and speaker credibility prior. Although KG has slightly higher accuracy on decidable claims, Bayesian fusion provides calibrated probabilities across the full binary evaluation set and achieves a ROC-AUC of 0.8416.
 
 ## Responsible AI and Ethics
 
@@ -390,29 +373,5 @@ The notebooks should be run in order because each module produces outputs used b
 |---|---|---|---|
 | 1 | `01_feature_engineering_eda.ipynb` | Loads LIAR data, performs EDA, maps labels, and engineers features | `features.json` |
 | 2 | `02_roberta_finetuning.ipynb` | Fine-tunes RoBERTa and generates claim-level probability scores | `roberta_scores.json` |
-| 3 | `03_kg_reasoning.ipynb` | Builds the knowledge graph and applies symbolic reasoning rules | KG verdicts |
+| 3 | `03_kg_reasoning.ipynb` | Builds the knowledge graph and applies symbolic reasoning rules | `kg_results.json` |
 | 4 | `04_bayesian_fusion.ipynb` | Combines RoBERTa, KG, and speaker prior signals using Bayesian fusion | `final_verdicts.json` |
-
-## Future Enhancements
-
-- Add live evidence retrieval from reliable external fact-checking or news sources to support claims beyond the LIAR dataset.
-- Improve model calibration so confidence values more closely match real-world correctness rates.
-- Evaluate fairness across parties, speakers, and topics to identify whether some groups are systematically over-flagged.
-- Extend the system to multi-class veracity prediction instead of only binary true/false classification.
-- Add stronger handling for ambiguous claims such as `half-true`, where a single binary verdict may be misleading.
-- Compare the hybrid system with retrieval-augmented LLM explanations while keeping human verification in the loop.
-- Test scalability on larger and more recent misinformation datasets.
-
-## References
-
-- Wang, W. Y. (2017). LIAR, LIAR Pants on Fire: A New Benchmark Dataset for Fake News Detection. *Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics*.
-- Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., and Stoyanov, V. (2019). RoBERTa: A Robustly Optimized BERT Pretraining Approach.
-- PolitiFact. LIAR dataset source claims and veracity labels.
-- Streamlit documentation: https://docs.streamlit.io/
-- scikit-learn documentation: https://scikit-learn.org/
-- NetworkX documentation: https://networkx.org/
-- spaCy documentation: https://spacy.io/
-
-## GenAI Acknowledgement
-
-Generative AI tools were used to support explanation, debugging, documentation improvement, and report/readme polishing. Final decisions, implementation outputs, interpretation of results, and academic responsibility remain with the project team.
